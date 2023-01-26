@@ -1,0 +1,48 @@
+1. CREAR BD CON PHPMYADMIN Y UN USUARIO
+  En el navegador: localhost/phpmyadmin  
+  Crear un una BD y un usuario con encriptación normal
+ 
+
+2. DESCARGAR PRESTASHOP de prestashop.com y descomprimirlo 
+  Se descomprime generando tres ficheros
+  Creamos una carpeta y lo descomprimimos
+
+3. COPIAR PRESTASHOP A /var/www/html
+  sudo cp -r . /var/www/html
+
+4. CAMBIAR A LA CARPETA DE APACHE
+  cd /var/www/html
+
+5. BORRAR index.html
+  sudo rm index.html
+
+6. PERMISOS A WWW-DATA A LOS NUEVOS ARCHIVOS Y CARPETAS
+  sudo chown -R www-data .
+  o
+  sudo chown -R www-data /var/www/html
+
+7. INICIAMOS LA INSTALACION:
+  En el navegador ponemos en la barra de direcciónes
+  la ip de nuestro servidor.
+  También podemos poner localhost pero eso impediria acceder
+  a prestashop desde otras máquinas de nuestra red
+
+8. AGREGAR EXTENSIONES PARA PODER INICIAR LA INSTALACIÓN
+  sudo apt install php7.3-zip php7.3-simplexml
+  sudo systemctl restart apache2
+
+9. AGREGAMOS COMPONENTES NECESARIOS
+  sudo apt install php7.3-curl
+  sudo apt install php7.3-gd
+  sudo apt install php7.3-intl
+  sudo a2enmod rewrite
+  sudo systemctl restart apache2
+
+10. BORRAMOS LA CARPETA DE INSTALACION
+  sudo rm --r install
+
+11. CAMBIAMOS EL NOMBRE A LA CARPETA DE ADMINISTRACION
+  sudo mv adminxxxx panelcontrol
+
+12. VISITAR LA TIENDA 
+  En la barra de navegación, ponemos la 'ip' de la máquina
